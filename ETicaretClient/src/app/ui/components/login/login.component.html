@@ -1,0 +1,25 @@
+<div class="row" style="margin-top: 50px;">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        
+            <div class="form-outline mb-4">
+                <label class="form-label"  for="KullaniciAdi">Kullanıcı Adı veya Email</label>
+                <input type="text" #txtUsernameOrEmail id="KullaniciAdi"
+                  class="form-control" placeholder="Kullanıcı Adı" />
+                 <small >Kullanıcı Adı  Boş Geçilemez</small>
+
+              </div>
+              
+            <div class="form-outline mb-4">
+              <label class="form-label"   for="Sifre">Şifre</label>
+              
+              <input type="password" #txtPassword id="Sifre"
+             
+               class="form-control" placeholder="Şifre" />
+            </div>
+         
+            <button type="submit" (click)="login(txtUsernameOrEmail.value,txtPassword.value)" class="btn btn-primary btn-block mb-4">GİRİŞ YAP</button>
+          
+    </div>
+    <div class="col-md-2"></div>
+</div>
