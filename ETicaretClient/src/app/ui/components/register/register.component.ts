@@ -1,6 +1,6 @@
 import { validateHorizontalPosition } from '@angular/cdk/overlay';
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { AbstractControl, UntypedFormBuilder, UntypedFormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { BaseComponent, SpinnerType } from 'src/app/base/base.component';
 import { CreateUser } from 'src/app/contracts/Users/creat_users';
@@ -16,12 +16,12 @@ import { CustomToastrService, ToastrMessageType, ToastrPosition } from 'src/app/
 })
 export class RegisterComponent extends BaseComponent implements OnInit {
 
-  constructor(private formbuilder:FormBuilder, private userService:UserService,
+  constructor(private formbuilder:UntypedFormBuilder, private userService:UserService,
     private toastService:CustomToastrService,spinner:NgxSpinnerService) {
       super(spinner)
      }
 
-  frm:FormGroup;
+  frm:UntypedFormGroup;
   ngOnInit(): void {
     this.frm=this.formbuilder.group({
       nameSurname:["",[Validators.required,Validators.maxLength(50),Validators.minLength(3)]],

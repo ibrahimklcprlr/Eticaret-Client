@@ -37,7 +37,20 @@ import { JwtModule } from '@auth0/angular-jwt';
     })
   ],
   providers: [
-    { provide: "baseUrl", useValue: "https://localhost:7059/api", multi: true }
+    { provide: "baseUrl", useValue: "https://localhost:7059/api", multi: true },
+    // {
+    //   provide: "SocialAuthServiceConfig",
+    //   useValue: {
+    //     autoLogin: false,
+    //     providers: [
+    //       {
+    //         id: GoogleLoginProvider.PROVIDER_ID,
+    //         provider: new GoogleLoginProvider("902986185803-4dl068flq4g27bpj299khhlq7es3g988.apps.googleusercontent.com")
+    //       }
+    //     ],
+    //     onError: err => console.log(err)
+    //   } as SocialAuthServiceConfig
+    // }
   ],
   bootstrap: [AppComponent],
   schemas: [
