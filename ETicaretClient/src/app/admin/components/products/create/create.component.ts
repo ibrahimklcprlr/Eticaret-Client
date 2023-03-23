@@ -15,7 +15,9 @@ import { ProductService } from '../../../../services/common/models/product.servi
 })
 export class CreateComponent extends BaseComponent implements OnInit {
 
-  constructor(spiner: NgxSpinnerService, private productService: ProductService, private alertify: AlertifyService) {
+  constructor(spiner: NgxSpinnerService, 
+    private productService: ProductService,
+     private alertify: AlertifyService) {
     super(spiner)
   }
 
@@ -30,6 +32,7 @@ export class CreateComponent extends BaseComponent implements OnInit {
     create_product.name = name.value;
     create_product.stock = parseInt(stock.value);
     create_product.price = parseFloat(price.value);
+    debugger;
 
     this.productService.create(create_product, () => {
       this.hideSpinner(SpinnerType.BallAtom);
