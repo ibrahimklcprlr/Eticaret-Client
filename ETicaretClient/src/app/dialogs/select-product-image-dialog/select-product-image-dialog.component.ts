@@ -40,6 +40,10 @@ export class SelectProductImageDialogComponent extends BaseDialog<SelectProductI
     isAdminPage: true,
     queryString: `id=${this.data}`
   };
+  showCase(imageId:string){
+this.productService.changeShowcaseImage(imageId,this.data as string);
+
+  }
   async deleteImage(imageId:string,event:any){
     this.dialogService.openDialog({
       componentType:DeleteDialogComponent,

@@ -70,4 +70,12 @@ export class ProductService {
     await firstValueFrom(deleteProduct);
     successCallBack();
   }
+  async changeShowcaseImage(imageId:string,productId:string,successCallBack?:()=>void):Promise<void>{
+   const result= await this.httpClientService.put({
+      controller:"products",
+      action:"ChangeShowCaseImageFile",
+      queryString:`imageId=${imageId}&productId=${productId}`
+    },{})
+    await firstValueFrom(result)
+  }
 }

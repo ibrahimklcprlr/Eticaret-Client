@@ -30,7 +30,7 @@ export class UserService {
   }
   async login(UsernameOrEmail:string,Password:string,CallBackFunction?:()=>void):Promise<void>{
  const result:Observable<any|TokenResponse> = this.httpclientService.post<any|TokenResponse>({
-    controller:"Users",
+    controller:"Auth",
     action:"Login"
 
   },{UsernameOrEmail,Password})
@@ -38,6 +38,7 @@ export class UserService {
   
 if(tokenResponse){
   localStorage.setItem("accesstoken",tokenResponse.token.accessToken)
+  localStorage.setItem("refreshToken",tokenResponse.token.refreshToken)
   this.toastservice.message("Kullanıcı Girişi Başarılı Bir Şekilde Gerçekleşti","Giriş Başarılı",{
     messageType:ToastrMessageType.Success,
     position:ToastrPosition.TopRight
@@ -45,6 +46,19 @@ if(tokenResponse){
 }
 CallBackFunction();
   }
+
+async refreshTokenLogin(refreshToken:string,CallBackFunction?: ()=>{}){
+  const response:Observable<any|TokenResponse>=this.httpclientService.post({
+    action:"RefreshTokenLogin",
+    controller:"auth"
+  },{refreshToken:refreshToken});
+  const tokenResponse:TokenResponse=await firstValueFrom(response) as TokenResponse
+  if(response){
+    localStorage.setItem("accesstoken",tokenResponse.token.accessToken)
+    localStorage.setItem("refreshToken",tokenResponse.token.refreshToken)
+   
+  }
+}
 
 
   
